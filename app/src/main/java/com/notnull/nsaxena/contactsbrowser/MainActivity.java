@@ -10,6 +10,7 @@ import android.os.SystemClock;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.support.annotation.RequiresApi;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -71,7 +72,9 @@ public class MainActivity extends AppCompatActivity {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableObserver<String>() {
                     @Override public void onComplete() {
-                        Log.d(TAG, "onComplete()");
+                        Snackbar snackbar = Snackbar
+                                .make(findViewById(android.R.id.content), "successfully saved the file", Snackbar.LENGTH_LONG);
+                        snackbar.show();
                     }
 
                     @Override
